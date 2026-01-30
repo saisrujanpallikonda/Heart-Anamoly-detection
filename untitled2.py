@@ -126,6 +126,16 @@ X_train, X_test, y_train, y_test = train_test_split(dataset.drop('target', 1),
 model = RandomForestClassifier(max_depth=5)
 model.fit(X_train, y_train)
 
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+
+knn_acc = accuracy_score(y_test, y_pred)
+print("KNN Accuracy:", knn_acc)
+
 import numpy as np
 X_train, X_test, y_train, y_test = train_test_split(dataset.drop('target', 1),
                                                     dataset['target'], test_size = 0.30, random_state=42)
