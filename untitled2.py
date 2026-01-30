@@ -148,3 +148,12 @@ plt.show()
 ac = accuracy_score(y_test,y_predict)
 print('Accuracy is: ',ac*100)
 
+results = {
+    "Logistic Regression": test_data_accuracy,
+    "Decision Tree": dt_accuracy,
+    "Random Forest": ac,
+    "KNeighborsClassifier": knn_acc
+}
+
+best_model = max(results, key=results.get)
+print("Best Model:", best_model)
